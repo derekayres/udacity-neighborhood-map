@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListView from './components/ListView'
 import './App.css';
 import axios from 'axios'
 
@@ -71,6 +72,7 @@ getVenues = () => {
   render() {
     return (
       <main>
+      <ListView />
       <div id="map"></div>
       </main>
     )
