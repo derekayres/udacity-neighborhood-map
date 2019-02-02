@@ -72,8 +72,10 @@ getVenues = () => {
   render() {
     return (
       <main>
-      <ListView />
-      <div id="map"></div>
+        <div>
+          <ListView />
+        </div>
+        <div id="map"></div>
       </main>
     )
   }
