@@ -53,18 +53,18 @@ getVenues = () => {
           this.state.venues.map(myVenue => {
 
             var contentString = `${myVenue.venue.name} Address: ${myVenue.venue.location.address}`
-            //create marker
-            var marker = new window.google.maps.Marker({
+            //create marker as a property of each venue
+            myVenue.marker = new window.google.maps.Marker({
               position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
               map: map,
               title: myVenue.venue.name
             })
             //click on marker
-            marker.addListener('click', function() {
+            myVenue.marker.addListener('click', function() {
               //change the content
               infowindow.setContent(contentString)
               //opens an infowindow
-              infowindow.open(map, marker);
+              infowindow.open(map, myVenue.marker);
             })
           })
   }
@@ -73,7 +73,7 @@ getVenues = () => {
     return (
       <main>
         <div>
-          <ListView />
+          <ListView venues={this.state.venues} />
         </div>
         <div id="map"></div>
       </main>
