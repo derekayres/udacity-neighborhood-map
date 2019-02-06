@@ -82,12 +82,13 @@ getVenues = () => {
   render() {
     return (
       <main>
+        <div className='App-header'>South Philly Eats!</div>
+        <div className='container'>
         <div>
-          <div>
-            <ListView venues={this.state.venues} />
-          </div>
-            <div id="map"></div>
+          <ListView venues={this.state.venues} />
         </div>
+            <div id="map"></div>
+        </div>    
       </main>
     )
   }
