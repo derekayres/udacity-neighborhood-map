@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 
 
 class ListView extends Component {
@@ -22,33 +20,27 @@ updateQuery = (query) => {
 
 render() {
 
-    let showingVenues = this.props.venues.filter( venue => {
+    let showingVenues = this.props.venues.filter(venue => {
       const name = venue.venue.name.toLowerCase();
       const query = this.state.query.toLowerCase();
 
-       if (  venue.venue.name.includes(this.state.query)) {
-              //  handle the marker visibility with `setVisible` (set to true)
-              // return venue (because the filter needs to return the matching venues)
-              venue.marker.setVisible(true);
-            //  showingVenues = this.props.venues
-         } else {
-              // set marker visibility to false
-              // DON'T return the venue because it does not match
-              venue.marker.setVisible(false);
-       }
-    });
+      // check if name matches query
+      if (name.includes(query)) {
+        //if it does and venue has a marker, set it to visible
+        if (venue.marker) {
+          venue.marker.setVisible(true);
+        }
 
-
-    /*
-    let showingVenues
-    if (this.state.query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i')
-      showingVenues = this.props.venues.filter((venue) => match.test(venue.venue.name))
-    } else {
-      showingVenues = this.props.venues
-    }
-    */
-
+        //  return the venue because is matches
+        return venue;
+      } else {
+        // it doesn't match so set the marker to invisible
+        if (venue.marker) {
+          venue.marker.setVisible(false);
+        }
+      }
+        return null;
+    })
 
 
     console.log('Props', this.props)
@@ -57,20 +49,27 @@ render() {
     return(
       <main>
           <div className="venues-list-wrapper">
-            <input type="text"
+            <input
+            className="input-field"
+            type="text"
             placeholder="search by name"
             value={this.state.query}
             onChange={(event) => this.updateQuery(event.target.value)}
             />
-          </div>
 
           <ol className='venues-list'>
             {showingVenues.map((venue) => (
-              <li className='venues-list-item' key={venue.venue.id}>
+              <li className='venues-list-item'
+              key={venue.venue.id}
+              onClick={(event) => window.google.maps.event.trigger(venue.marker,'click')}
+              //onClick={(event) => window.google.maps.Animation.BOUNCE(venue.marker,'click')}
+              //  venue.marker.setAnimation(window.google.maps.Animation.BOUNCE);
+              >
                 {venue.venue.name}
               </li>
             ))}
           </ol>
+          </div>
       </main>
 
     )

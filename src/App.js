@@ -50,32 +50,44 @@ getVenues = () => {
           //create info window
           var infowindow = new window.google.maps.InfoWindow()
           //display markers
-          this.state.venues.map(myVenue => {
+          this.setState(currentState => {
+            currentState.venues.map(myVenue => {
 
             var contentString = `${myVenue.venue.name} Address: ${myVenue.venue.location.address}`
             //create marker as a property of each venue
             myVenue.marker = new window.google.maps.Marker({
               position: {lat: myVenue.venue.location.lat, lng: myVenue.venue.location.lng},
               map: map,
-              title: myVenue.venue.name
+              title: myVenue.venue.name,
+              animation : window.google.maps.Animation.DROP
             })
+
             //click on marker
             myVenue.marker.addListener('click', function() {
               //change the content
               infowindow.setContent(contentString)
               //opens an infowindow
               infowindow.open(map, myVenue.marker);
+              //make marker bounce on click
+              myVenue.marker.setAnimation(window.google.maps.Animation.BOUNCE);
+              setTimeout(function(){ myVenue.marker.setAnimation(null); }, 750);
             })
+            return null
           })
+          return currentState;
+        })
+
   }
 
   render() {
     return (
       <main>
         <div>
-          <ListView venues={this.state.venues} />
+          <div>
+            <ListView venues={this.state.venues} />
+          </div>
+            <div id="map"></div>
         </div>
-        <div id="map"></div>
       </main>
     )
   }

@@ -1,3 +1,6 @@
+
+img, embed, object, video {max-width:100%;}
+
 .App {
   text-align: center;
 }
@@ -20,6 +23,22 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.input-field {
+  margin: 1.5em;
+  min-width: 48px;
+}
+
+.venues-list-wrapper {
+  background-color:#03fbed;
+}
+
+.venues-list-item {
+  padding: 10px;
+  margin: 10px;
+  list-style-type: none;
+  background-color:#6ffff7;
 }
 
 @keyframes App-logo-spin {
