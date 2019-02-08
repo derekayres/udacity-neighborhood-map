@@ -50,6 +50,7 @@ render() {
       <section className='listView'>
           <div className="venues-list-wrapper">
             <input
+            aria-label="Restaurant Input Filter Field"
             className="input-field"
             type="text"
             placeholder="search by name"

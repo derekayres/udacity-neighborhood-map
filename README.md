@@ -12,6 +12,8 @@ TO RUN
 
   npm start
 
+  open app in the browser at:  localhost: 8000
+
 
 NOTE: The service workers for this app will only cache the site when it is in production mode.
 

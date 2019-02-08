@@ -76,12 +76,12 @@ html, body {
   .venues-list-wrapper {background-color: red;}
   .container {flex-direction: row}
   .listView {
-    height: 100vh;
-    width: 25vw;
+    height: 93vh;
+    width: 25%;
     overflow-y: scroll;
   }
   #map {
-    width: 75vw;
+    width: 75%;
   }
 }
 
@@ -89,11 +89,11 @@ html, body {
   .venues-list-wrapper {background-color: yellow;}
   .container {flex-direction: row}
   .listView {
-    height: 100vh;
-    width: 25vw;
+    height: 93vh;
+    width: 25%;
     overflow-y: scroll;
   }
   #map {
-    width: 75vw;
+    width: 75%;
   }
 }
