@@ -47,7 +47,7 @@ render() {
     console.log(this.props.venues)
 
     return(
-      <main>
+      <section className='listView'>
           <div className="venues-list-wrapper">
             <input
             className="input-field"
@@ -70,7 +70,7 @@ render() {
             ))}
           </ol>
           </div>
-      </main>
+      </section>
 
     )
   }

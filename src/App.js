@@ -84,11 +84,9 @@ getVenues = () => {
       <main>
         <div className='App-header'>South Philly Eats!</div>
         <div className='container'>
-        <div>
           <ListView venues={this.state.venues} />
+          <div id="map"></div>
         </div>
-            <div id="map"></div>
-        </div>    
       </main>
     )
   }

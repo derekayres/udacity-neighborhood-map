@@ -23,6 +23,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .input-field {
@@ -30,8 +31,13 @@
   min-width: 48px;
 }
 
+.listView {
+  width: 100vw
+}
+
 .venues-list-wrapper {
   background-color:#03fbed;
+  padding: 0;
   width:100%;
 }
 
@@ -57,7 +63,7 @@
 
 #map {
         height: 100vh;
-        width: 75vw
+        width: 100vw
 }
 
 html, body {
@@ -68,7 +74,26 @@ html, body {
 
 @media screen and (min-width: 500px) {
   .venues-list-wrapper {background-color: red;}
+  .container {flex-direction: row}
+  .listView {
+    height: 100vh;
+    width: 25vw;
+    overflow-y: scroll;
+  }
+  #map {
+    width: 75vw;
+  }
 }
+
 @media screen and (min-width: 800px) {
   .venues-list-wrapper {background-color: yellow;}
+  .container {flex-direction: row}
+  .listView {
+    height: 100vh;
+    width: 25vw;
+    overflow-y: scroll;
+  }
+  #map {
+    width: 75vw;
+  }
 }
